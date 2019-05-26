@@ -1,0 +1,30 @@
+﻿@model List<Domain.Movie>
+
+<div>
+    <table>
+        @{
+            var i = 0;
+            while (i < Model.Count())
+            {
+                <tr>
+                    @for (int k = 0; k < 3; k++)
+                    {
+                        if (@i < Model.Count())
+                        {
+                            <td>
+                                <div align="center">
+                                    <a href="~/Movie/index/@Model[@i].Id">
+                                        <img src="@Model[@i].Photo_Link" class="img-thumbnail" />
+                                    </a>
+                                </div>
+                                <h3 align="center">@Model[@i].title</h3>
+                                <p align="center">@Model[@i].original_title</p>
+                            </td>
+                            i += 1;
+                        }
+                    }
+                </tr>
+            }
+        }
+    </table>
+</div>

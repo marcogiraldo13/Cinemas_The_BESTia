@@ -1,0 +1,15 @@
+﻿@model Domain.Movie
+@{
+    ViewData["Title"] = "Index";
+}
+    <div class="row">
+        <hr />
+        <div class="col-md-4">
+            <img src="@Model.Photo_Link" class="img-thumbnail" />
+        </div>
+        <h1>Original Title: @Model.original_title</h1>
+        <h3>Vote Average: @Model.vote_average</h3>
+        <h3>Original Language: @Model.original_language</h3>
+        <h3>Relesae Date: @Model.release_date</h3>
+        <h4>@Model.overview</h4>
+    </div>

@@ -1,3 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Cinema The BESTia";
 }
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 align="center"> CARTELERA </h1>
+        <hr />
+        @await Component.InvokeAsync("MovieGallery")
+    </div>
+</div>

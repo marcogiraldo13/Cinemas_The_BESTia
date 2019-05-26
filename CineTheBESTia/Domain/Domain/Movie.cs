@@ -20,6 +20,6 @@ namespace Domain
         public string poster_path { get; set; }
         public string backdrop_path { get; set; }
         public bool adult { get; set; }
-
+        public string Photo_Link {  get; set; }
     }
 }
