@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{31E489B2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{DDD2F788-9250-4FE6-9E02-5E7458C55386}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonCode", "CommonCode\CommonCode\CommonCode.csproj", "{83394B41-0101-4CC2-97F4-A4F36A70A1E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "CommonCode\CommonCode\Common.csproj", "{83394B41-0101-4CC2-97F4-A4F36A70A1E1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BussinessRules", "BussinessRules\BussinessRules\BussinessRules.csproj", "{AC8AC90E-0F52-48F4-8735-54D8660AFD14}"
 EndProject
@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain\Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceApi", "Apis\ServiceApi\ServiceApi.csproj", "{A1361D35-6FF1-4F75-803D-765246B79157}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaViews", "Views\CinemaViews\CinemaViews.csproj", "{F6C6F2B9-3D6A-40E0-863B-0FB00823F816}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaViews", "Views\CinemaViews\CinemaViews.csproj", "{F6C6F2B9-3D6A-40E0-863B-0FB00823F816}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
