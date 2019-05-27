@@ -10,7 +10,25 @@ namespace Common.Implementations
 {
     public class TheMovieDBCommand : ICommand
     {
-        public List<Movie> Execute()
+        public object ExecuteFunctions()
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                var uri = "http://localhost:63845/api/Functions";
+                var res = client.DownloadString(uri);
+                var response = JsonConvert.DeserializeObject<List<Function>>(res);
+
+                return response;
+            }
+            catch (Exception)
+            {
+                return new List<Movie>();
+                //throw;
+            }
+        }
+
+        public object ExecuteMovies()
         {
             try
             {
@@ -32,6 +50,24 @@ namespace Common.Implementations
                 //throw;
             }
            
+        }
+
+        public object ExecuteSeats()
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                var uri = "http://localhost:63845/api/Seats";
+                var res = client.DownloadString(uri);
+                var response = JsonConvert.DeserializeObject<List<Seat>>(res);
+
+                return response;
+            }
+            catch (Exception)
+            {
+                return new List<Movie>();
+                //throw;
+            }
         }
     }
 }

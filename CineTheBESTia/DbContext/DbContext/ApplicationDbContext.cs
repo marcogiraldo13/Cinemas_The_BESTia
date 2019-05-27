@@ -12,5 +12,9 @@ namespace DbContext
         }
 
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Booking> Booking { get; set; }
+        public DbSet<Function> Functions { get; set; }
+        public DbSet<Seat> Seates { get; set; }
+        public DbSet<SeatxFunction> SeatxFunction { get; set; }
     }
 }

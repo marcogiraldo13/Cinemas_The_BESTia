@@ -1,0 +1,44 @@
+﻿@model BookingViewModel
+@{
+    ViewData["Title"] = "Booking";
+}
+<div class="row">
+    <hr />
+    <div class="col-md-4">
+        <img src="@Model.BooingMovie.Photo_Link" class="img-thumbnail" />
+    </div>
+    <h1>Original Title: @Model.BooingMovie.original_title</h1>
+    <h3>Vote Average: @Model.BooingMovie.vote_average</h3>
+    <h3>Original Language: @Model.BooingMovie.original_language</h3>
+    <h3>Relesae Date: @Model.BooingMovie.release_date</h3>
+    <h4>@Model.BooingMovie.overview</h4>
+</div>
+
+<div>
+<table align="center" border="1" width="300" height="300">
+    <tr>
+        <td colspan="5">
+            <h2 align="center">SCREEN</h2>
+        </td>
+    </tr>
+    @{
+        var i = 0;
+        while (i < Model.SeatList.Count())
+        {
+            <tr>
+                @for (int k = 0; k < 5; k++)
+                {
+                    if (@i < Model.SeatList.Count())
+                    {
+                        <td align="center" width="100" height="100">
+                            <h3 align="center">@Model.SeatList[@i].seat_number</h3>
+                            @Html.CheckBoxFor(@Model => @Model.SeatList[@i].isavailable)
+                        </td>
+                        i += 1;
+                    }
+                }
+            </tr>
+        }
+    }
+</table>
+</div>

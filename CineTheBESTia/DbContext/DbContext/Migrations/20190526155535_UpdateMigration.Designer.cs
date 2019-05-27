@@ -4,14 +4,16 @@ using DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DbContext.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190526155535_UpdateMigration")]
+    partial class UpdateMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,42 +74,6 @@ namespace DbContext.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Domain.Booking", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("booking_cost");
-
-                    b.Property<DateTime>("booking_date");
-
-                    b.Property<int?>("functionsId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("functionsId");
-
-                    b.ToTable("Booking");
-                });
-
-            modelBuilder.Entity("Domain.Function", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("cost");
-
-                    b.Property<string>("details");
-
-                    b.Property<bool>("isavailable");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Functions");
-                });
-
             modelBuilder.Entity("Domain.Movie", b =>
                 {
                     b.Property<int>("Id")
@@ -147,38 +113,6 @@ namespace DbContext.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
-                });
-
-            modelBuilder.Entity("Domain.Seat", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("seat_number");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Seates");
-                });
-
-            modelBuilder.Entity("Domain.SeatxFunction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("functionId");
-
-                    b.Property<int?>("seatId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("functionId");
-
-                    b.HasIndex("seatId");
-
-                    b.ToTable("SeatxFunction");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -289,24 +223,6 @@ namespace DbContext.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Domain.Booking", b =>
-                {
-                    b.HasOne("Domain.Function", "functions")
-                        .WithMany("bookes")
-                        .HasForeignKey("functionsId");
-                });
-
-            modelBuilder.Entity("Domain.SeatxFunction", b =>
-                {
-                    b.HasOne("Domain.Function", "function")
-                        .WithMany("seatxFunctions")
-                        .HasForeignKey("functionId");
-
-                    b.HasOne("Domain.Seat", "seat")
-                        .WithMany("seatxFunctions")
-                        .HasForeignKey("seatId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

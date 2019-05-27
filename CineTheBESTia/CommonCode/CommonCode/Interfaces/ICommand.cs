@@ -5,6 +5,8 @@ namespace Common.Interfaces
 {
     public interface ICommand
     {
-        List<Movie> Execute();
+        object ExecuteFunctions();
+        object ExecuteMovies();
+        object ExecuteSeats();
     }
 }

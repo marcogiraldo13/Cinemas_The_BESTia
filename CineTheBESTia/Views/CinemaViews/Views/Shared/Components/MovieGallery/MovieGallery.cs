@@ -21,7 +21,7 @@ namespace CinemaViews.Views.Shared.Components.MovieGallery
         {
             try
             {
-                Utilities.MoviesList = _executeBCommand.Execute();
+                Utilities.MoviesList = (List<Movie>)_executeBCommand.ExecuteMovies();
                 return View(Utilities.MoviesList);
             }
             catch (System.Exception)
