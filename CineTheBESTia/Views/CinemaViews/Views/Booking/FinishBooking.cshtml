@@ -1,0 +1,26 @@
+﻿@model Domain.BookingViewModel
+@{
+    ViewData["Title"] = "Finish Booking";
+}
+
+<div class="well">
+    @Html.Partial("_MovieDetail", new MovieDetailViewModel { MovieSelectDetail = Model.BookingMovie })
+</div>
+
+<form asp-action="Booking" method="post" enctype="multipart/form-data">
+    <div>
+        @{
+            string seats = string.Empty;
+            @foreach (var item in Model.SeatList.Where(x => x.isavailable == true))
+            {
+                seats += item.seat_number + ",";
+            }
+            <h3>Total To Pay: @Model.BookingCost</h3>
+            <h3>Seats: @seats</h3>
+        }
+    </div>
+
+    <div>
+        <button class="btn btn-success" type="submit">Pay</button>
+    </div>
+</form>

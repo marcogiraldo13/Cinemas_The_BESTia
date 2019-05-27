@@ -48,7 +48,7 @@ namespace CinemaViews.Controllers
             Utilities.BookingViewModelUtil.FunctionMovie = model.Function;
             var seatbyFunction = (List<SeatxFunction>)_executeBCommand.ExecuteSeatsbyFunctionId(Convert.ToInt32(model.Function));
 
-            var filterMovie = allSeats.Where(x => seatbyFunction.Any(y => y.seatId == x.Id && y.MovieId == model.MovieSelect.Id));
+            var filterMovie = allSeats.Where(x => seatbyFunction.Any(y => y.seatId == x.Id && y.movieId == model.MovieSelect.Id));
             foreach (var item in filterMovie)
             {
                 allSeats.Where(x => x.Id == item.Id).FirstOrDefault().isavailable = true;

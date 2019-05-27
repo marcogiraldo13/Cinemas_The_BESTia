@@ -87,5 +87,59 @@ namespace Common.Implementations
                 //throw;
             }
         }
+
+        public object ExecuteFunctionsbyId(int idFunction)
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                var uri = string.Format("http://localhost:63845/api/Functions/{0}", idFunction);
+                var res = client.DownloadString(uri);
+                var response = JsonConvert.DeserializeObject<Function>(res);
+
+                return response;
+            }
+            catch (Exception)
+            {
+                return new List<Movie>();
+                //throw;
+            }
+        }
+
+        public object ExecuteSaveBooking(Booking booking)
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                var uri = string.Format("http://localhost:63845/api/Functions/{0}");
+                var res = client.DownloadString(uri);
+                var response = JsonConvert.DeserializeObject<Function>(res);
+
+                return response;
+            }
+            catch (Exception)
+            {
+                return new List<Movie>();
+                //throw;
+            }
+        }
+
+        public object ExecuteSaveSeatxFunction(SeatxFunction seatxFunction)
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                var uri = string.Format("http://localhost:63845/api/Functions/{0}");
+                var res = client.DownloadString(uri);
+                var response = JsonConvert.DeserializeObject<Function>(res);
+
+                return response;
+            }
+            catch (Exception)
+            {
+                return new List<Movie>();
+                //throw;
+            }
+        }
     }
 }

@@ -9,7 +9,9 @@ namespace Domain
         public int Id { get; set; }
         public int booking_cost { get; set; }
         public DateTime booking_date { get; set; }
-        public int MovieId { get; set; }
+        public int functionId { get; set; }
+        public int movieId { get; set; }
+        public bool isActive { get; set; }
 
         public Function functions { get; set; }
     }
