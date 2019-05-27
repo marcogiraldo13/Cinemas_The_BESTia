@@ -1,6 +1,6 @@
 ﻿@model MovieViewModel
 
-    <form asp-action="insert" method="post" enctype="multipart/form-data">
+    <form asp-action="SearchSeats" method="post" enctype="multipart/form-data">
         @Html.HiddenFor(x => x.MovieSelect.Id)
         @Html.HiddenFor(x => x.MovieSelect.original_title)
         @Html.HiddenFor(x => x.MovieSelect.original_language)
@@ -25,12 +25,11 @@
                         <label asp-for="MovieSelect.original_title" align="center">Select Date To verify Functions</label>
                     </td>
                     <td style="padding-left: 5px; padding-right: 5px; vertical-align:central;">
-                        @*@Html.EditorFor(model => model.booking_date, new { htmlAttributes = new { @class = "form-control datepicker", Value = DateTime.Now, @type = "date" } })*@
                         @Html.DropDownListFor(model => model.Function, Model.FunctionList)
                     </td>
                     <td style="padding-left: 5px; padding-right: 5px; vertical-align:central;">
                         <button class="btn btn-success" type="submit">
-                            Buscar
+                            Reservar
                         </button>
                     </td>
                 </tr>

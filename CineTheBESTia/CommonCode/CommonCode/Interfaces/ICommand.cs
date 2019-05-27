@@ -8,5 +8,6 @@ namespace Common.Interfaces
         object ExecuteFunctions();
         object ExecuteMovies();
         object ExecuteSeats();
+        object ExecuteSeatsbyFunctionId(int idFunction);
     }
 }

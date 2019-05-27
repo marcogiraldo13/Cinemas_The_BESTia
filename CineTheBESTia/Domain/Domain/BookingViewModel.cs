@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CinemaViews.Models
+namespace Domain
 {
     public class BookingViewModel
     {

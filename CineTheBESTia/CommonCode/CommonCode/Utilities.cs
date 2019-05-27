@@ -8,5 +8,6 @@ namespace Common
     public class Utilities
     {
         public static List<Movie> MoviesList{get; set;}
+        public static BookingViewModel BookingViewModelUtil { get; set; }
     }
 }

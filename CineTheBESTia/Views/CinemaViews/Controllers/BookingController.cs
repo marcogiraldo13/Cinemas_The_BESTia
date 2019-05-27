@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using CinemaViews.Models;
 using Microsoft.AspNetCore.Mvc;
+using Common;
+using Domain;
 
 namespace CinemaViews.Controllers
 {
@@ -11,37 +13,21 @@ namespace CinemaViews.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View(Utilities.BookingViewModelUtil);
         }
 
         [HttpPost]
-        public IActionResult Insert(BookingViewModel model)
+        public IActionResult PreBooking(BookingViewModel model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View("Create", model);
-            //}
 
-            //var path = $"wwwroot\\uploads\\{model.Photo.FileName}";
 
-            //using (var stream = new FileStream(path, FileMode.Create))
-            //{
-            //    model.Photo.CopyTo(stream);
-            //}
 
-            //var photo = new Photo
-            //{
-            //    AlbumId = model.AlbumId,
-            //    PhotoLink = $"/uploads/{model.Photo.FileName}"
-            //};
 
-            //_photoService.Create(photo);
 
-            //return RedirectToAction("Index", new
-            //{
-            //    id = model.AlbumId
-            //});
-            return RedirectToAction("Index");
+
+
+
+            return PartialView("Index", model);
         }
     }
 }

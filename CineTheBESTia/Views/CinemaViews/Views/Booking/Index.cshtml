@@ -1,4 +1,4 @@
-﻿@model BookingViewModel
+﻿@model Domain.BookingViewModel
 @{
     ViewData["Title"] = "Booking";
 }
@@ -14,31 +14,58 @@
     <h4>@Model.BookingMovie.overview</h4>
 </div>
 
-<div>
-<table align="center" border="1" width="300" height="300">
-    <tr>
-        <td colspan="5">
-            <h2 align="center">SCREEN</h2>
-        </td>
-    </tr>
-    @{
-        var i = 0;
-        while (i < Model.SeatList.Count())
-        {
+<form asp-action="PreBooking" method="post" enctype="multipart/form-data">
+
+    @Html.HiddenFor(x => x.BookingMovie.Id)
+    @Html.HiddenFor(x => x.BookingMovie.original_title)
+    @Html.HiddenFor(x => x.BookingMovie.original_language)
+    @Html.HiddenFor(x => x.BookingMovie.vote_average)
+    @Html.HiddenFor(x => x.BookingMovie.overview)
+    @Html.HiddenFor(x => x.BookingMovie.release_date)
+    @Html.HiddenFor(x => x.BookingMovie.image)
+    @Html.HiddenFor(x => x.BookingMovie.video)
+    @Html.HiddenFor(x => x.BookingMovie.vote_count)
+    @Html.HiddenFor(x => x.BookingMovie.title)
+    @Html.HiddenFor(x => x.BookingMovie.popularity)
+    @Html.HiddenFor(x => x.BookingMovie.poster_path)
+    @Html.HiddenFor(x => x.BookingMovie.backdrop_path)
+    @Html.HiddenFor(x => x.BookingMovie.adult)
+    @Html.HiddenFor(x => x.BookingMovie.Photo_Link)
+    @Html.HiddenFor(x => x.FunctionMovie)
+    <div>
+        <table align="center" border="1" width="300" height="300">
             <tr>
-                @for (int k = 0; k < 5; k++)
+                <td colspan="5">
+                    <h2 align="center">SCREEN</h2>
+                </td>
+            </tr>
+            @{
+                var i = 0;
+                while (i < Model.SeatList.Count())
                 {
-                    if (@i < Model.SeatList.Count())
-                    {
+                    <tr>
+                        @for (int k = 0; k < 5; k++)
+                        {
+                            if (@i < Model.SeatList.Count())
+                            {
                         <td align="center" width="100" height="100">
                             <h3 align="center">@Model.SeatList[@i].seat_number</h3>
-                            @Html.CheckBoxFor(@Model => @Model.SeatList[@i].isavailable)
+                            @if (!Model.SeatList[@i].isavailable)
+                            {
+                                @Html.CheckBoxFor(model => model.SeatList[@i].isavailable)
+                            }
+                            @Html.HiddenFor(x => x.SeatList[@i].Id)
                         </td>
-                        i += 1;
-                    }
+                                i += 1;
+                            }
+                        }
+                    </tr>
                 }
-            </tr>
-        }
-    }
-</table>
-</div>
+            }
+        </table>
+    </div>
+
+    <div>
+        <button class="btn btn-success" type="submit">Reservar</button>
+    </div>
+</form>

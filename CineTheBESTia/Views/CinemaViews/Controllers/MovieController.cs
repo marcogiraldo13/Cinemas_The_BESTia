@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using CinemaViews.Models;
+﻿using CinemaViews.Models;
 using Common;
 using Common.Interfaces;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CinemaViews.Controllers
 {
@@ -41,14 +38,24 @@ namespace CinemaViews.Controllers
         }
 
         [HttpPost]
-        public IActionResult Insert(MovieViewModel model)
+        public IActionResult SearchSeats(MovieViewModel model)
         {
-            var bookingModel = new BookingViewModel();
-            bookingModel.SeatList = (List<Seat>)_executeBCommand.ExecuteSeats();
-            bookingModel.BookingMovie = model.MovieSelect;
-            bookingModel.FunctionMovie = model.Function;
+            Utilities.BookingViewModelUtil = new BookingViewModel();
+            Utilities.BookingViewModelUtil.BookingMovie = new Movie();
+            Utilities.BookingViewModelUtil.SeatList = new List<Seat>();
+            var allSeats = (List<Seat>)_executeBCommand.ExecuteSeats();
+            Utilities.BookingViewModelUtil.BookingMovie = model.MovieSelect;
+            Utilities.BookingViewModelUtil.FunctionMovie = model.Function;
+            var seatbyFunction = (List<SeatxFunction>)_executeBCommand.ExecuteSeatsbyFunctionId(Convert.ToInt32(model.Function));
 
-            return View("../Booking/Index", bookingModel);
+            var filterMovie = allSeats.Where(x => seatbyFunction.Any(y => y.seatId == x.Id && y.MovieId == model.MovieSelect.Id));
+            foreach (var item in filterMovie)
+            {
+                allSeats.Where(x => x.Id == item.Id).FirstOrDefault().isavailable = true;
+            }
+            Utilities.BookingViewModelUtil.SeatList = allSeats;
+
+            return RedirectToAction("Index", "Booking");
         }
     }
 }

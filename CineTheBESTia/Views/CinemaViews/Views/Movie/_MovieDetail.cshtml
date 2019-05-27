@@ -1,0 +1,15 @@
+﻿@model MovieViewModel
+@{
+    ViewData["Title"] = "Movie";
+}
+<div class="row">
+    <hr />
+    <div class="col-md-4">
+        <img src="@Model.MovieSelect.Photo_Link" class="img-thumbnail" />
+    </div>
+    <h1>Original Title: @Model.MovieSelect.original_title</h1>
+    <h3>Vote Average: @Model.MovieSelect.vote_average</h3>
+    <h3>Original Language: @Model.MovieSelect.original_language</h3>
+    <h3>Relesae Date: @Model.MovieSelect.release_date</h3>
+    <h4>@Model.MovieSelect.overview</h4>
+</div>

@@ -69,5 +69,23 @@ namespace Common.Implementations
                 //throw;
             }
         }
+
+        public object ExecuteSeatsbyFunctionId(int idFunction)
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                var uri = string.Format("http://localhost:63845/api/SeatxFunctions/GetFunctionbyId/{0}", idFunction);
+                var res = client.DownloadString(uri);
+                var response = JsonConvert.DeserializeObject<List<SeatxFunction>>(res);
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                return new List<SeatxFunction>();
+                //throw;
+            }
+        }
     }
 }
