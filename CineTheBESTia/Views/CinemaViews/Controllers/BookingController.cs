@@ -27,9 +27,7 @@ namespace CinemaViews.Controllers
             try
             {
                 var bookinAll = (List<Booking>)_executeBCommand.ExecuteBooking();
-
-
-                return View("View", bookinAll);
+                return View("View", bookinAll.Where(x => x.isActive == true));
             }
             catch (Exception)
             {
@@ -90,11 +88,11 @@ namespace CinemaViews.Controllers
         }
 
 
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
             try
             {
-               
+                _executeBCommand.ExecuteDeleteBooking(id);
             }
             catch (Exception)
             {

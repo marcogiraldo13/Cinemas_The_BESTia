@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common;
 using Common.Implementations;
 using Common.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -34,6 +35,7 @@ namespace CinemaViews
 
             // Commands
             services.AddTransient<ICommand, TheMovieDBCommand>();
+            services.AddTransient<IPolicyManager, PolicyManager>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

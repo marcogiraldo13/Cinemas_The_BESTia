@@ -13,5 +13,6 @@ namespace Common.Interfaces
         void ExecuteSaveBooking(Booking booking);
         void ExecuteSaveSeatxFunction(SeatxFunction seatxFunction);
         object ExecuteBooking();
+        void ExecuteDeleteBooking(int id);
     }
 }

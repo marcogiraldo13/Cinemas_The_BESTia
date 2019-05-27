@@ -155,5 +155,19 @@ namespace Common.Implementations
                 //throw;
             }
         }
+
+        public void ExecuteDeleteBooking(int id)
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                var uri = string.Format("http://localhost:63845/api/Bookings/{0}", id);
+                client.UploadString(uri, id.ToString());
+            }
+            catch (Exception ex)
+            {
+                //throw;
+            }
+        }
     }
 }

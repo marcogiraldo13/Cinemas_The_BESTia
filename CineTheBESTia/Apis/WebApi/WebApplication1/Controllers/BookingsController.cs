@@ -73,10 +73,22 @@ namespace WebApplication1.Controllers
         }
 
         // POST: api/Bookings
-        [HttpPost]
-        public async Task<ActionResult<Booking>> PostBooking(Booking booking)
+        [HttpPost("{id}")]
+        public async Task<ActionResult<Booking>> PostBooking(int id)
         {
-            _context.Booking.Add(booking);
+            var booking = await _context.Booking.FindAsync(id);
+            var seatxFunction = _context.SeatxFunction.Where(x => x.functionId == booking.functionId && x.movieId == booking.movieId).ToList();
+            if (booking == null)
+            {
+                return NotFound();
+            }
+            booking.isActive = false;
+
+            foreach (var item in seatxFunction)
+            {
+                _context.SeatxFunction.Remove(item);
+            }
+            _context.Booking.Update(booking);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetBooking", new { id = booking.Id }, booking);
