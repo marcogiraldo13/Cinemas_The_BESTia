@@ -1,30 +1,32 @@
-﻿@model BookingViewModel
+﻿@model MovieViewModel
 
     <form asp-action="insert" method="post" enctype="multipart/form-data">
-        @Html.HiddenFor(x => x.BooingMovie.Id)
-        @Html.HiddenFor(x => x.BooingMovie.original_title)
-        @Html.HiddenFor(x => x.BooingMovie.original_language)
-        @Html.HiddenFor(x => x.BooingMovie.vote_average)
-        @Html.HiddenFor(x => x.BooingMovie.overview)
-        @Html.HiddenFor(x => x.BooingMovie.release_date)
-        @Html.HiddenFor(x => x.BooingMovie.image)
-        @Html.HiddenFor(x => x.BooingMovie.video)
-        @Html.HiddenFor(x => x.BooingMovie.vote_count)
-        @Html.HiddenFor(x => x.BooingMovie.title)
-        @Html.HiddenFor(x => x.BooingMovie.popularity)
-        @Html.HiddenFor(x => x.BooingMovie.poster_path)
-        @Html.HiddenFor(x => x.BooingMovie.backdrop_path)
-        @Html.HiddenFor(x => x.BooingMovie.adult)
-        @Html.HiddenFor(x => x.BooingMovie.Photo_Link)
+        @Html.HiddenFor(x => x.MovieSelect.Id)
+        @Html.HiddenFor(x => x.MovieSelect.original_title)
+        @Html.HiddenFor(x => x.MovieSelect.original_language)
+        @Html.HiddenFor(x => x.MovieSelect.vote_average)
+        @Html.HiddenFor(x => x.MovieSelect.overview)
+        @Html.HiddenFor(x => x.MovieSelect.release_date)
+        @Html.HiddenFor(x => x.MovieSelect.image)
+        @Html.HiddenFor(x => x.MovieSelect.video)
+        @Html.HiddenFor(x => x.MovieSelect.vote_count)
+        @Html.HiddenFor(x => x.MovieSelect.title)
+        @Html.HiddenFor(x => x.MovieSelect.popularity)
+        @Html.HiddenFor(x => x.MovieSelect.poster_path)
+        @Html.HiddenFor(x => x.MovieSelect.backdrop_path)
+        @Html.HiddenFor(x => x.MovieSelect.adult)
+        @Html.HiddenFor(x => x.MovieSelect.Photo_Link)
+        
 
         <div class="form-group" align="right">
             <table>
                 <tr>
                     <td style="padding-left: 5px; padding-right: 5px; vertical-align:central;">
-                        <label asp-for="BooingMovie.original_title" align="center">Select Date To verify Functions</label>
+                        <label asp-for="MovieSelect.original_title" align="center">Select Date To verify Functions</label>
                     </td>
                     <td style="padding-left: 5px; padding-right: 5px; vertical-align:central;">
-                        @Html.EditorFor(model => model.booking_date, new { htmlAttributes = new { @class = "form-control datepicker", Value = DateTime.Now, @type = "date" } })
+                        @*@Html.EditorFor(model => model.booking_date, new { htmlAttributes = new { @class = "form-control datepicker", Value = DateTime.Now, @type = "date" } })*@
+                        @Html.DropDownListFor(model => model.Function, Model.FunctionList)
                     </td>
                     <td style="padding-left: 5px; padding-right: 5px; vertical-align:central;">
                         <button class="btn btn-success" type="submit">
@@ -33,7 +35,7 @@
                     </td>
                 </tr>
             </table>
-           
+
         </div>
     </form>
 

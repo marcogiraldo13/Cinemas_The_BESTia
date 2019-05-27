@@ -6,8 +6,8 @@ namespace CinemaViews.Models
 {
     public class BookingViewModel
     {
-        public Movie BooingMovie { get; set; }
-        public DateTime booking_date { get; set; }
+        public Movie BookingMovie { get; set; }
         public List<Seat> SeatList { get; set; }
-}
+        public string FunctionMovie { get; set; }
+    }
 }
