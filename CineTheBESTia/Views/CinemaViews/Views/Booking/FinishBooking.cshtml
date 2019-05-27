@@ -8,6 +8,25 @@
 </div>
 
 <form asp-action="Booking" method="post" enctype="multipart/form-data">
+    @Html.HiddenFor(x => x.BookingMovie.Id)
+    @Html.HiddenFor(x => x.BookingMovie.original_title)
+    @Html.HiddenFor(x => x.BookingMovie.original_language)
+    @Html.HiddenFor(x => x.BookingMovie.vote_average)
+    @Html.HiddenFor(x => x.BookingMovie.overview)
+    @Html.HiddenFor(x => x.BookingMovie.release_date)
+    @Html.HiddenFor(x => x.BookingMovie.image)
+    @Html.HiddenFor(x => x.BookingMovie.video)
+    @Html.HiddenFor(x => x.BookingMovie.vote_count)
+    @Html.HiddenFor(x => x.BookingMovie.title)
+    @Html.HiddenFor(x => x.BookingMovie.popularity)
+    @Html.HiddenFor(x => x.BookingMovie.poster_path)
+    @Html.HiddenFor(x => x.BookingMovie.backdrop_path)
+    @Html.HiddenFor(x => x.BookingMovie.adult)
+    @Html.HiddenFor(x => x.BookingMovie.Photo_Link)
+    @Html.HiddenFor(x => x.BookingCost)
+    @Html.HiddenFor(x => x.FunctionMovie)
+
+
     <div>
         @{
             string seats = string.Empty;

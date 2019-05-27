@@ -7,7 +7,7 @@ namespace Domain
     public class Booking
     {
         public int Id { get; set; }
-        public int booking_cost { get; set; }
+        public double booking_cost { get; set; }
         public DateTime booking_date { get; set; }
         public int functionId { get; set; }
         public int movieId { get; set; }

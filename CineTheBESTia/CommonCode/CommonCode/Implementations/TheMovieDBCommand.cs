@@ -106,14 +106,14 @@ namespace Common.Implementations
             }
         }
 
-        public object ExecuteSaveBooking(Booking booking)
+        public object ExecuteBooking()
         {
             try
             {
                 WebClient client = new WebClient();
-                var uri = string.Format("http://localhost:63845/api/Functions/{0}");
+                var uri = "http://localhost:63845/api/Bookings";
                 var res = client.DownloadString(uri);
-                var response = JsonConvert.DeserializeObject<Function>(res);
+                var response = JsonConvert.DeserializeObject<List<Booking>>(res);
 
                 return response;
             }
@@ -124,20 +124,34 @@ namespace Common.Implementations
             }
         }
 
-        public object ExecuteSaveSeatxFunction(SeatxFunction seatxFunction)
+        public void ExecuteSaveBooking(Booking booking)
         {
             try
             {
                 WebClient client = new WebClient();
-                var uri = string.Format("http://localhost:63845/api/Functions/{0}");
-                var res = client.DownloadString(uri);
-                var response = JsonConvert.DeserializeObject<Function>(res);
-
-                return response;
+                var uri = string.Format("http://localhost:63845/api/Bookings");
+                var json = JsonConvert.SerializeObject(booking);
+                client.Headers.Add("Content-Type", "application/json");
+                client.UploadString(uri, json);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return new List<Movie>();
+                //throw;
+            }
+        }
+
+        public void ExecuteSaveSeatxFunction(SeatxFunction seatxFunction)
+        {
+            try
+            {
+                WebClient client = new WebClient();
+                var uri = string.Format("http://localhost:63845/api/SeatxFunctions");
+                var json = JsonConvert.SerializeObject(seatxFunction);
+                client.Headers.Add("Content-Type", "application/json");
+                client.UploadString(uri, json);
+            }
+            catch (Exception ex)
+            {
                 //throw;
             }
         }

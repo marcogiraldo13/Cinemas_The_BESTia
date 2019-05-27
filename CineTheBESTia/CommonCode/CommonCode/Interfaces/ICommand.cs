@@ -10,7 +10,8 @@ namespace Common.Interfaces
         object ExecuteSeats();
         object ExecuteSeatsbyFunctionId(int idFunction);
         object ExecuteFunctionsbyId(int idFunction);
-        object ExecuteSaveBooking(Booking booking);
-        object ExecuteSaveSeatxFunction(SeatxFunction seatxFunction);
+        void ExecuteSaveBooking(Booking booking);
+        void ExecuteSaveSeatxFunction(SeatxFunction seatxFunction);
+        object ExecuteBooking();
     }
 }
